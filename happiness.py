@@ -39,7 +39,7 @@ def get_happiness(days_config):
             return " and ".join(days[today])
         except KeyError:
             pass
-    return f"Happy {today:%A}!"
+    return f"Happy {today:%A}!"  # Default to weekday name, e.g., Monday.
 
 
 def get_random_salutation(salutations_config):
