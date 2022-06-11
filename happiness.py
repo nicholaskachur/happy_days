@@ -6,7 +6,7 @@ import random
 import time
 
 EMPTY_GREETING = ""
-MAX_DELAY_SECONDS = 7
+MAX_DELAY_SECONDS = 3
 
 
 def get_args():
@@ -25,10 +25,10 @@ def get_args():
 
 def get_random_greeting(config):
     """Get a uniformly random greeting from a text config file."""
-    if not config:
-        return EMPTY_GREETING
-    greetings = config.read_text()
-    greetings.append(EMPTY_GREETING)
+    greetings = [EMPTY_GREETING]
+    if config:
+        with config.open("r") as f:
+            greetings.extend(line.strip() for line in f)
     return random.choice(greetings)
 
 
