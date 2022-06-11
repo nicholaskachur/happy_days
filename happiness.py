@@ -57,7 +57,10 @@ def main():
     happiness = get_happiness(args.days)
     salutation = get_random_salutation(args.salutations)
     if salutation != EMPTY_SALUTATION:
+        # Salutations are responsible for any punctuation they need.
         happiness = f"{salutation} {happiness}"
+    # Try to give the user a small, pleasant surprise.
+    # Planning to use more for automated, chat bot applications.
     delay_seconds = random.randrange(MAX_DELAY_SECONDS)
     time.sleep(delay_seconds)
     print(happiness)
